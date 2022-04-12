@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오뱅크 ERP - Sample</title>
+<link rel="icon" href="../../images/favicon/favi.gif" />
+<link rel="stylesheet" type="text/css" href="../../css/cmn.css" />
+<link rel="stylesheet" type="text/css" href="../../css/popup.css" />
+<style type="text/css">
+/* 가로 사이즈 조정용 */
+.cont_wrap {
+	width: 1013px;
+}
+
+.popup_bg {
+	/* 숨김용 */
+	/* display: none;  */
+	
+}
+
+.popup {
+	/* 숨김용 */
+	/* display: none; */
+	/* 크기변경용 */
+	width: 947px;
+	height: 800px;
+	top: calc(50% - 400px); /* 높이 반  */
+	left: calc(50% - 463.5px); /* 너비 반 */
+}
+
+.popup_cont {
+	/* 내용 변경용 */
+	font-size: 10.5pt;
+	/* height: 290px; */
+}
+/* 개인 작업 영역 */
+table {
+	border: 1px;
+	width: 927px;
+	margin: 40px auto;
+}
+
+td:nth-child(n+2) {
+	border-bottom: 1px solid #d7d7d7;
+}
+
+td:nth-child(3) {
+	border: none;
+}
+td:nth-child(1), td:nth-child(3) {
+	text-align: center;
+}
+
+.btn {
+	width: 90px;
+	height: 40px;
+}
+
+.address {
+	width: 90px;
+	height: 100px;
+}
+
+.btn, .address {
+	background-color: #fff;
+	border-radius: 3px;
+	font-weight: bold;
+	font-size: 14px;
+	width: 150px;
+	border: none;
+}
+
+.txt_in:hover, .btnImg:hover {
+	cursor: pointer;
+}
+
+.txt {
+	height: 33px;
+	width: 95%;
+	padding: 0 5px;
+	font-size: 10.5px;
+	color: black;
+	vertical-align: middle;
+	box-sizing: border-box;
+	outline: none;
+	border-radius: 3px;
+	line-height: 33px;
+	border: none;
+}
+
+.txt:hover {
+	cursor: pointer;
+}
+
+.btnImg {
+	width: 32px;
+	height: 32px;
+	text-align: right;
+	margin-left: 10px;
+}
+
+.btnImg_in {
+	display: inline-block;
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+	float: right;
+	cursor: pointer;
+}
+
+.imgPos {
+	text-align: right;
+}
+
+.title_name {
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 3px solid #2E83F2;
+	padding-bottom: 10px;
+	margin-top: 100px;
+	margin-bottom: 30px;
+}
+
+.box_in {
+	width: 885px;
+	height: 80px;
+	border: 1px solid #d7d7d7;
+	border-radius: 7px;
+	margin-bottom: 18px;
+	margin-left: 40px;
+	background-color: #F2F2F2;
+}
+
+.plus_btn {
+	display: inline-block;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	background-image: url("../../images/sales/plus.png");
+	background-size: 18px 18px;
+	float: right;
+	margin-right: 5px;
+}
+
+.drop_btn {
+	display: inline-block;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	background-image: url("../../images/sales/downarrow.png");
+	background-size: 18px 18px;
+	float: right;
+}
+
+.plus_btn, .drop_btn:hover {
+	cursor: pointer;
+}
+
+.txt_in {
+	width: 100%;
+	border: none;
+	outline: none;
+}
+/* 활동시간 입력칸 */
+.num_in {
+	width: 130px;
+	outline: none;
+	border: none;
+}
+
+.ta_box {
+	width: 718px;
+	height: 80px;
+	border: none;
+	outline: none;
+	background-color: #f2f2f2;
+	resize: none;
+}
+
+.jo_box {
+	width: 718px;
+	height: 40px;
+	border: none;
+	outline: none;
+	background-color: #f2f2f2;
+	resize: none;
+}
+
+.up_btn {
+	display: inline-block;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	background-image: url("../../images/sales/up_arrow.png");
+	background-size: 18px 18px;
+	float: right;
+	margin-right: 5px;
+}
+
+.plus_btn:hover, .up_btn:hover {
+	cursor: pointer;
+}
+/* 날짜 입력칸 */
+.date_box {
+	width: 200px;
+	height: 33px;
+	font-size: 10.5px;
+	border: none;
+	outline: none;
+}
+/* 물결용 */
+.wave {
+	display: inline-block;
+	vertical-align: top;
+	width: 15px;
+	height: 15px;
+	font-size: 15px;
+	font-weight: bold;
+	/* margin-left: 20px; */
+}
+/* 첨부자료 */
+.cntrct_box_in {
+	width: 885px;
+	height: 100px;
+	border: 1px solid #d7d7d7;
+	border-radius: 7px;
+	margin-bottom: 18px;
+	margin-left: 40px;
+}
+
+.rvn_txt {
+	height: 33px;
+	width: 885px;
+	padding: 0 15px;
+	font-size: 14px;
+	color: black;
+	box-sizing: border-box;
+	outline: none;
+	border-radius: 3px;
+	line-height: 33px;
+	border: 1px solid #d7d7d7;
+	background-color: #F2F2F2;
+	text-align: left;
+	font-weight: bold;
+	margin-left: 40px;
+	margin-bottom: 5px;
+}
+
+.plus_btn {
+	display: inline-block;
+	vertical-align: middle;
+	width: 18px;
+	height: 18px;
+	background-image: url("../../images/sales/plus.png");
+	background-size: 18px 18px;
+	float: right;
+	margin-right: 5px;
+	margin-top: 5.5px;
+}
+
+.popup_cont {
+	background-color: white;
+}
+</style>
+</head>
+<body>
+	<!-- 팝업 시작 -->
+	<div class="popup_bg"></div>
+	<div class="popup">
+		<div class="popup_title">리드일정</div>
+		<div class="popup_cont pc_back">
+			<!-- 팝업디자인 들어갈 곳 -->
+			<table>
+				<colgroup>
+					<col width="200" />
+					<col width="143.4" />
+					<col width="143.4" />
+					<col width="143.4" />
+					<col width="143.4" />
+					<col width="143.4" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>
+							<input type="button" class="btn" value="일정명" readonly="readonly" />
+						</td>
+						<td colspan="5">
+							<input type="text" class="txt" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" class="btn" value="영업/리드" readonly="readonly" />
+						</td>
+						<td colspan="5">
+							<input type="text" class="txt" readonly="readonly" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" class="btn" value="활동분류 *" readonly="readonly" />
+						</td>
+						<td colspan="5">
+							<select class="txt_in">
+								<optgroup>
+									<option>전화</option>
+									<option>메일</option>
+									<option>방문</option>
+									<option>기타</option>
+								</optgroup>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" class="btn" value="활동목적 *" readonly="readonly" />
+						</td>
+						<td colspan="5">
+							<select class="txt_in">
+								<optgroup>
+									<option>종합광고</option>
+									<option>개별광고</option>
+									<option>클레임</option>
+									<option>교육</option>
+									<option>기타</option>
+								</optgroup>
+							</select>
+						</td>
+					</tr>
+					<tr>
+								<td><input type="button" class="btn" value="날짜 *" readonly="readonly"/></td>
+								<td colspan="2"><input type="datetime-local" class="txt" /></td>
+								<td>
+									<div class="wave"> ~ </div>
+								</td>
+								<td colspan="2"><input type="datetime-local" class="txt" /></td>
+							</tr>
+					<tr>
+						<td>
+							<input type="button" class="btn" value="활동내용" readonly="readonly" />
+						</td>
+						<td colspan="5">
+							<textarea class="ta_box"></textarea>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- 첨부자료 -->
+			<div class="rvn_txt">
+				첨부자료 (0)
+				<input type=file name='file1' style='display: none;' />
+				<img class="plus_btn" src="../../images/sales/plus.png" border='0' onclick="document.all.file1.click();">
+			</div>
+			<div class="cntrct_box_in"></div>
+		</div>
+		<div class="popup_btn_area">
+			<!-- 버튼 개수는 자유 -->
+			<div class="cmn_btn_mr">등록</div>
+			<div class="cmn_btn_mr">취소</div>
+		</div>
+	</div>
+	<!-- 팝업 끝 -->
+	<div class="top_area">
+		<div class="logo">
+			<div class="logo_erp_text">ERP</div>
+		</div>
+		<div class="menu_depth1_wrap">
+			<!-- _on 달린 것이 활성화 상태 -->
+			<div class="top_menu_on">
+				<div class="top_menu_text">인사</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">그룹웨어</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">경영관리</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">영업관리</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">고객지원</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">경영정보</div>
+				<div class="top_menu_bar"></div>
+			</div>
+		</div>
+	</div>
+	<div class="left_area">
+		<div class="emp_info_area">
+			<div class="emp_info">
+				<div class="emp_image_area">
+					<div class="emp_image_wrap">
+						<img alt="사원이미지" src="../../images/cmn/emp_image.png" />
+					</div>
+				</div>
+				<div class="emp_info_wrap">
+					<div class="emp_name_txt">백종훈<div class="emp_opt_btn"></div>
+					</div>
+					<div class="emp_dept_txt">경영관리팀 대리</div>
+				</div>
+			</div>
+			<div class="emp_menu_area">
+				<div class="emp_menu">메신저</div>
+				<div class="emp_menu">내정보</div>
+				<div class="emp_menu_last">로그아웃</div>
+			</div>
+		</div>
+		<div class="left_menu_dpeth1_txt">인사</div>
+		<div class="left_menu_wrap">
+			<!-- 2depth 메뉴 -->
+			<!-- 2depth 단일메뉴 -->
+			<div class="menu_depth2">
+				<div class="menu_depth2_single_area">
+					<div class="menu_depth2_text">단일메뉴</div>
+					<div class="left_menu_bar"></div>
+				</div>
+			</div>
+			<!-- 2depth 복수메뉴 -->
+			<!-- 현재 선택중인 메뉴는 on -->
+			<div class="menu_depth2">
+				<div class="menu_depth2_area">
+					<div class="menu_depth2_text">회계관리</div>
+					<div class="left_menu_bar"></div>
+				</div>
+				<!-- 3depth 메뉴 -->
+				<!-- 현재 선택중인 메뉴는 on -->
+				<div class="menu_depth3_wrap">
+					<div class="menu_depth3">회계관리</div>
+					<div class="menu_depth3">회계관리</div>
+				</div>
+			</div>
+			<div class="menu_depth2_on">
+				<div class="menu_depth2_area">
+					<div class="menu_depth2_text">회계관리</div>
+					<div class="left_menu_bar"></div>
+				</div>
+				<div class="menu_depth3_wrap">
+					<!-- 현재 선택중인 메뉴는 on -->
+					<div class="menu_depth3_on">회계관리</div>
+					<div class="menu_depth3">회계관리</div>
+				</div>
+			</div>
+			<div class="menu_depth2">
+				<div class="menu_depth2_area">
+					<div class="menu_depth2_text">회계관리</div>
+					<div class="left_menu_bar"></div>
+				</div>
+				<div class="menu_depth3_wrap">
+					<div class="menu_depth3">회계관리</div>
+					<div class="menu_depth3">회계관리</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="right_area">
+		<div class="navi_bar">
+			Home
+			<div class="navi_next"></div>
+			경영관리
+			<div class="navi_next"></div>
+			프로젝트 투입관리
+			<div class="navi_next"></div>
+			프로젝트 관리
+		</div>
+		<!-- 내용영역 -->
+		<div class="cont_wrap">
+			<div class="page_title_bar">
+				<div class="page_title_text">프로젝트 관리</div>
+				<!-- 검색영역 선택적 사항 -->
+				<div class="page_srch_area">
+					<select class="srch_sel">
+						<option>제목</option>
+						<option>내용</option>
+						<option>작성자</option>
+					</select>
+					<div class="srch_text_wrap">
+						<input type="text" />
+					</div>
+					<div class="cmn_btn_ml">검색</div>
+				</div>
+			</div>
+			<!-- 해당 내용에 작업을 진행하시오. -->
+			<div class="cont_area">
+				<!-- 여기부터 쓰면 됨 -->
+				<table class="board_table">
+					<colgroup>
+						<col width="100" />
+						<col width="400" />
+						<col width="150" />
+						<col width="150" />
+						<col width="100" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
+							<th>조회수</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="board_table_hover board_cont_left">게시판입니다.</td>
+							<td>백종훈 대리</td>
+							<td>2021-12-01</td>
+							<td>3</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="board_bottom">
+					<div class="pgn_area">
+						<div class="page_btn page_first">first</div>
+						<div class="page_btn page_prev">prev</div>
+						<div class="page_btn_on">1</div>
+						<div class="page_btn">2</div>
+						<div class="page_btn">3</div>
+						<div class="page_btn">4</div>
+						<div class="page_btn">5</div>
+						<div class="page_btn page_next">next</div>
+						<div class="page_btn page_last">last</div>
+					</div>
+					<div class="cmn_btn_ml">글쓰기</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

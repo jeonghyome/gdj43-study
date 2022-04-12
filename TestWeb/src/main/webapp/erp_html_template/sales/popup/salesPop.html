@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오뱅크 ERP - 영업기회 팝업</title>
+<link rel="icon" href="../../images/favicon/favi.gif" />
+<link rel="stylesheet" type="text/css" href="../../css/cmn.css" />
+<link rel="stylesheet" type="text/css" href="../../css/popup.css" />
+<style type="text/css">
+.cont_wrap {
+	width: 1013px;
+}
+
+.body {
+	display: block;
+	background-color: white;
+	width: 1013px;
+	height: 100%;
+	margin: auto;
+}
+
+.bodyWrap {
+	display: block;
+	background-color: white;
+	width: 927px;
+	height: 100%;
+	margin: 40px auto;
+}
+.popup_bg {
+	/* 숨김용 */
+	display: none;
+	
+}
+.popup {
+	/* 숨김용 */
+	/* display: none; */
+	/* 크기변경용 */
+	width: 150px;
+	height: 200px;
+	top: calc(50% - 200px); /* 높이 반  */
+	left: calc(50% - 300px); /* 너비 반 */
+	outline: 1px solid #2E83F2;
+}
+.popup_cont {
+	/* 내용 변경용 */
+	width: 150px;
+	height: 30px;
+	font-size: 10.5pt;
+}
+.leadicon {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
+	background-image: url("../../images/sales/Ldbag.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin: 10px 5px;
+}
+.qtnicon {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
+	background-image: url("../../images/sales/qtn.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin: 10px 5px;
+}
+.cntrcticon {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
+	background-image: url("../../images/sales/cntrct.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin: 10px 5px;
+}
+.rvnicon {
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
+	background-image: url("../../images/sales/rvn.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin: 10px 5px;
+}
+.sales_list {
+	display: inline-block;
+	vertical-align: top; 
+	width: 90px;
+	line-height: 20px;
+	font-size: 10.5pt;
+	margin: 10px 3px;
+
+}
+.sales_list:hover {
+	display: inline-block;
+	vertical-align: top; 
+	font-size: 10.5pt;
+	margin: 10px 3px;
+	cursor: pointer;
+	font-weight: bold;
+	color: #2E83F2;
+}
+.blabla:active {
+	display: inline-block;
+	vertical-align: top; 
+	font-size: 10.5pt;
+	margin: 10px 3px;
+	cursor: pointer;
+	font-weight: bold;
+	color: #2E83F2;
+}
+</style>
+</head>
+<body>
+<div class="popup_bg"></div>
+<div class="popup">
+	<div class="popup_cont">
+	<div class="leadicon"></div>
+	<div class="sales_list">리드관리</div>
+	<div class="qtnicon"></div>
+	<div class="sales_list">견적</div>
+	<div class="cntrcticon"></div>
+	<div class="sales_list">계약</div>
+	<div class="rvnicon"></div>
+	<div class="sales_list">매출</div>
+	</div>
+</div>
+<div class="top_area">
+	<div class="logo"><div class="logo_erp_text">ERP</div></div>
+	<div class="menu_depth1_wrap">
+		<!-- _on 달린 것이 활성화 상태 -->
+		<div class="top_menu">
+			<div class="top_menu_text">인사</div>
+			<div class="top_menu_bar"></div>
+		</div>
+		<div class="top_menu">
+			<div class="top_menu_text">그룹웨어</div>
+			<div class="top_menu_bar"></div>
+		</div>
+		<div class="top_menu">
+			<div class="top_menu_text">경영관리</div>
+			<div class="top_menu_bar"></div>
+		</div>
+		<div class="top_menu_on">
+			<div class="top_menu_text">영업관리</div>
+			<div class="top_menu_bar"></div>
+		</div>
+		<div class="top_menu">
+			<div class="top_menu_text">고객지원</div>
+			<div class="top_menu_bar"></div>
+		</div>
+		<div class="top_menu">
+			<div class="top_menu_text">경영정보</div>
+			<div class="top_menu_bar"></div>
+		</div>
+	</div>
+</div>
+<div class="left_area">
+	<div class="emp_info_area">
+		<div class="emp_info">
+			<div class="emp_image_area">
+				<div class="emp_image_wrap">
+					<img alt="사원이미지" src="../../images/cmn/emp_image.png"/>
+				</div>
+			</div>
+			<div class="emp_info_wrap">
+				<div class="emp_name_txt">유은정<div class="emp_opt_btn"></div></div>
+				<div class="emp_dept_txt">영업관리팀 사원</div>
+			</div>
+		</div>
+		<div class="emp_menu_area">
+			<div class="emp_menu">메신저</div>
+			<div class="emp_menu">내정보</div>
+			<div class="emp_menu_last">로그아웃</div>
+		</div>
+	</div>
+	<div class="left_menu_dpeth1_txt">영업관리</div>
+	<div class="left_menu_wrap">
+		<!-- 2depth 메뉴 -->
+		<!-- 2depth 단일메뉴 -->
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">상품관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<!-- 2depth 복수메뉴 -->
+		<!-- 현재 선택중인 메뉴는 on -->
+		<div class="menu_depth2">
+			<div class="menu_depth2_area">
+				<div class="menu_depth2_text">고객관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+			<!-- 3depth 메뉴 -->
+			<!-- 현재 선택중인 메뉴는 on -->
+			<div class="menu_depth3_wrap">
+				<div class="menu_depth3">고객사관리</div>
+				<div class="menu_depth3">고객관리</div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">리드관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2_on">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">영업기회</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">매출</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_area">
+				<div class="menu_depth2_text">보고서</div>
+				<div class="left_menu_bar"></div>
+			</div>
+			<!-- 3depth 메뉴 -->
+			<!-- 현재 선택중인 메뉴는 on -->
+			<div class="menu_depth3_wrap">
+				<div class="menu_depth3">종합차트</div>
+				<div class="menu_depth3">고객사</div>
+				<div class="menu_depth3">고객</div>
+				<div class="menu_depth3">영업기회</div>
+				<div class="menu_depth3">견적</div>
+				<div class="menu_depth3">계약</div>
+				<div class="menu_depth3">매출</div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">사용자화</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="right_area">
+	<div class="navi_bar">
+		Home
+		<div class="navi_next"></div>
+		영업관리
+		<div class="navi_next"></div>
+		영업기회		
+	</div>
+		<div class="cont_wrap">
+			<div class="page_title_bar">
+				<div class="page_title_text">영업기회</div>
+				<!-- 검색영역 선택적 사항 -->
+			</div>
+			<!-- 해당 내용에 작업을 진행하시오. -->
+			<div class="cont_area">
+				<!-- 여기부터 쓰면 됨 -->
+				<div class="body">
+					<!-- 검색영역 -->
+					<div class="bodyWrap">
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">/* type : 해당 엔티티에 들어갈 내용을 지정 */
+.a {
+	background-color: orange;
+}
+#b1, #b2 {
+	background-color: green;
+}
+[name="c"] {
+	background-color: blue;
+}
+div {
+	color: #FFFFFF; /* 글자 색상 */
+}
+/* 셀렉터작성시 셀렉터1 셀렉터2의 경우(공백으로 분리된) 셀렉터1 안에 존재하는 모든 셀렉터2를 대상으로한다 */
+#b1 div {
+	color: yellow;
+}
+/* 셀렉터1 > 셀렉터2의 경우 셀렉터1의 직속 자식요소들 중 셀렉터2인것을 대상으로 한다 */
+#b1 > .b1_1 > div {
+	background-color: olive;
+}
+.b1_2 > div {
+	background-color: black;
+}
+/* 셀렉터:상태 -> 해당 상태일 때에만 적용 */
+div:hover {
+	background-color: red;
+}
+</style>
+</head>
+<body>
+<!-- 
+	div : 영역지정태그, display 속성이 block(가로 100%를 영역으로 지정)
+	span : 영역지정태그, display 속성이 inline(내용만큼만 영역으로 지정)
+ -->
+<div class="a">1</div>
+<div id="b1">2
+	<div class="b1_1">2-1
+		<div>2-1-1</div>
+	</div>
+	<div class="b1_2">2-2
+		<div>2-2-1</div>
+	</div>
+</div>
+<div name="c">3</div>
+<span class="a">1</span>
+<span id="b2">2</span>
+<span name="c">3</span>
+</body>
+</html>

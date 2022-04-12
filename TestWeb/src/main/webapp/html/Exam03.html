@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+thead > tr:nth-child(1) {
+	border-top: 1px solid #000;
+	height: 45px;
+	font-size: 13px;
+}
+
+tbody > tr {
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	height: 40px;
+	font-size: 13px;
+}
+
+th:nth-child(1), td:nth-child(1) {
+	width: 100px;
+	text-align: center;
+}
+th:nth-child(2), td:nth-child(2) {
+	width: 430px;
+}
+th:nth-child(3), td:nth-child(3) {
+	width: 130px;
+	text-align: left;
+}
+th:nth-child(4), td:nth-child(4) {
+	width: 100px;
+	text-align: center;
+}
+th:nth-child(5), td:nth-child(5) {
+	width: 80px;
+	text-align: center;
+}
+th:nth-child(6), td:nth-child(6) {
+	width: 80px;
+	text-align: center;
+}
+
+.main {
+    width: 52px;
+    height: 21px;
+    border: 1px solid #EF9A9A;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 15px;
+    background-color: #FFCDD2;
+    color: red;
+}
+
+tbody tr:nth-child(1),
+tbody tr:nth-child(2),
+tbody tr:nth-child(3),
+tbody tr:nth-child(4),
+tbody tr:nth-child(5),
+tbody tr:nth-child(6),
+tbody tr:nth-child(7) {
+	background-color: #F5F5F5;
+}
+
+tbody > tr:nth-child(1) > td:nth-child(2),
+tbody > tr:nth-child(2) > td:nth-child(2),
+tbody > tr:nth-child(3) > td:nth-child(2),
+tbody > tr:nth-child(4) > td:nth-child(2),
+tbody > tr:nth-child(5) > td:nth-child(2),
+tbody > tr:nth-child(6) > td:nth-child(2),
+tbody > tr:nth-child(7) > td:nth-child(2) {
+	font-weight: bold;
+	color: red;
+}
+
+thead > tr:nth-child(1) > th:nth-child(6):hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+tbody > tr:nth-child(1n) > td:nth-child(2):hover, 
+tbody > tr:nth-child(1n) > td:nth-child(3):hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회</th>
+			<th>좋아요</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<span class="main">공지</span>
+			</td>
+			<td>[IT 취업정보] ★사람인 입사지원서★ 이력사항 작성 가이드</td>
+			<td>구디아카데미<img src="https://cafe.pstatic.net/levelicon/1/1_999.gif"></td>
+			<td>2021.02.23</td>
+			<td>800</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>21644</td>
+			<td>01.11 정리 ( outline, white-space 등등 )</td>
+			<td>자바 조연지<img src="https://cafe.pstatic.net/levelicon/1/1_120.gif"></td>
+			<td>01:27</td>
+			<td>6</td>
+			<td>0</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

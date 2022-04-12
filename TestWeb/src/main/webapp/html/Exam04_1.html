@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.a {
+	width: 148px;
+	height: 148px;
+	border: 1px solid #000;
+	background-color: gray;
+}
+
+
+.b{
+	position: absolute;
+	top: calc(50% - 400px);
+	left: calc(50% - 379px);
+	width: 768px;
+	height: 800px;
+	border: 1px solid #000;
+	background-color: #FAFAFA;
+	z-index: 100;
+}
+
+.top {
+	width: 768px;
+	height: 124px;
+	overflow-y: scroll;
+}
+
+.logo_img {
+	width: 240px;
+	height: 44px;
+	background-image: url("naverlogo.png");
+	background-size: 240px;
+	margin-top: 60px;
+	margin-left: 264px;
+}
+
+.bottom {
+	max-width: 768px;
+	min-width: 460px;
+	height: 993px;
+}
+
+.id_box {
+	width: 460px;
+	height: 75px;
+	margin: 0 auto;
+}
+
+.title {
+	font-size: 14px;
+ 	font-weight: 700;
+ 	margin: 19px 0 8px;
+}
+
+.bbox {
+	display: block;
+	vertical-align: top;
+    width: 100%;
+    height: 51px;
+    border: 1px solid #DADADA;
+    background-color: #FFFFFF;
+}
+
+.int {
+	width: 275px;
+	height: 29px;
+	padding-right: 25px; 
+	border: none;
+	font-size: 15px;
+	margin-top: 11px;
+}
+
+.com {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	left: 30px;
+	line-height: 51px;
+	font-size: 15px;
+	color: #8e8e8e;
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.6;
+	z-index: 50;
+}
+
+.lock {
+	display: inline-block;
+	vertical-align: top;
+	width: 24px;
+	height: 24px;
+	position: relative;
+	top: 13.5px;
+	left: 80px;
+	background-image: url("123.png");
+	background-size: 24px 24px;
+}
+.lock2 {
+	display: inline-block;
+	vertical-align: top;
+	width: 24px;
+	height: 24px;
+	position: relative;
+	top: 13.5px;
+	left: 80px;
+	background-image: url("321.png");
+	background-size: 24px 24px;
+}
+
+</style>
+</head>
+<body>
+<div class="a">가나다</div>
+<div class="b">
+	<div class="top">
+		<div class="logo_img"></div>
+	</div>
+	<div class="bottom">
+		<div class="id_box">
+			<div class="title">아이디</div>
+			<span class="bbox">
+				<input type="text" class="int" maxlength="20" />
+				<div class="com">@naver.com</div>
+			</spans>
+		</div>
+		<div class="id_box">
+			<div class="title">비밀번호</div>
+			<span class="bbox">
+				<input type="text" class="int" maxlength="20" />
+				<div class="lock"></div>
+			</spans>
+		</div>
+		<div class="id_box">
+			<div class="title">비밀번호 재확인</div>
+			<span class="bbox">
+				<input type="text" class="int" maxlength="20" />
+				<div class="lock2"></div>
+			</spans>
+		</div>
+	</div>
+</div>
+<div class="bg"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 148px;
+	height: 148px;
+	display: inline-block;
+	vertical-align: top;
+}
+.a {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000;
+}
+.b {
+	border-bottom: 8px solid #E6E655;
+}
+.c {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000;
+	/* border-radius: 75px; */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	height: 30px;
+	font-size: 11pt;
+}
+body {
+	font-size: 0pt;
+}
+.on {
+	background-color: orange;
+}
+.c:hover {
+	background-color: navy;
+	color: white;
+}
+</style>
+</head>
+<body>
+<div class="a"></div>
+<div class="b"></div>
+<div class="c on">1번</div>
+<div class="c">2번</div>
+<div class="c">3번</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var str = "사과,배,감";
+var tmp = str.split(",");
+
+console.log(tmp);
+console.log(tmp.join("(●'◡'●)")); // 배열을 다시 문자열로 바꿈
+
+tmp.push("Hi"); // 추가
+console.log(tmp);
+
+tmp.pop(); // 끝 제거
+console.log(tmp);
+
+var a = tmp.shift(); // 앞 꺼내오면서 제거
+console.log(a);
+console.log(tmp);
+
+tmp.unshift("사과"); // 앞 추가
+console.log(tmp);
+
+/* 
+	splice(위치, 개수, 값들...)
+	해당 위치에 개수만큼 삭제 후 값들을 순차적으로 추가한다.
+*/
+tmp.splice(1, 0, "귤");
+console.log(tmp);
+
+tmp.splice(1, 2);
+console.log(tmp);
+
+tmp.splice(0, 1, "멜론");
+console.log(tmp);
+
+var d = new Date();
+console.log(d);
+console.log(d.toUTCString());
+console.log(d.getFullYear());
+console.log(d.getMonth() + 1);
+console.log(d.getDate());
+console.log(d.getDay());
+console.log(d.getHours());
+console.log(d.getMinutes());
+console.log(d.getSeconds());
+</script>
+</head>
+<body>
+<input type="text" id="txt" readonly="readonly" />
+<script type="text/javascript">
+// setTimeout(함수, 시간, 값들..)
+// 시간 뒤에 함수 실행. 시간 단위는 밀리초. 1s = 1000ms
+// 값들을 함수에 전달. 선택사항
+var timeout = setTimeout(function(msg) {
+				  alert(msg+ "3초지났다.");
+			  }, 3000, "Hi!");
+			  
+function helpMe() {
+	// clearTimeout(타임아웃객체);
+	// 해당 타임아웃객체를 취소 및 제거한다.
+	clearTimeout(timeout);
+}
+
+setInterval(function() {
+	d = new Date();
+	var time = d.getHours().toString().padStart(2, "0") + ":" + 
+			   d.getMinutes().toString().padStart(2, "0") + ":" +
+		       d.getSeconds().toString().padStart(2, "0");
+	document.getElementById("txt").value = time;
+}, 1000);
+</script>
+<br/>
+<input type="button" value="살려줘" onclick="helpMe();" />
+</body>
+</html>

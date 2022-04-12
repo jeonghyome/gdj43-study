@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#imgBox {
+	width: 250px;
+}
+</style>
+<script type="text/javascript">
+var interval = null;
+var imgs = ["1.jpg","2.jpg","3.jpg"];
+var pos = 0;
+
+interval = setInterval(play, 3000);
+
+function play() {
+	pos++;
+	
+	if(pos == imgs.length) {
+		pos = 0;
+	}
+	
+	document.getElementById("imgBox").src = imgs[pos];
+	
+	fade();
+}
+
+function fade() {
+	// FadeIn
+	for(var i = 1; i <= 10; i++) {
+		setTimeout(function(val) {
+			document.getElementById("imgBox").style.opacity = 0.0 + 0.1 * val;
+		}, 100 * i, i);
+	}
+	
+	// FadeOut
+	for(var i = 1; i <= 10; i++) {
+		setTimeout(function(val) {
+			document.getElementById("imgBox").style.opacity = 1.0 - 0.1 * val;
+		}, 2000 + 100 * i, i);
+	}
+}
+
+function pauseImg() {
+	if(interval == null) {
+		interval = setInterval(play, 3000);
+	} else {
+		clearInterval(interval);
+		interval = null;		
+	}
+}
+</script>
+</head>
+<body>
+<input type="button" value="pause" onclick="pauseImg();" />
+<br/>
+<img alt="이미지들" src="1.jpg" id="imgBox" />
+<script type="text/javascript">
+fade();
+</script>
+</body>
+</html>

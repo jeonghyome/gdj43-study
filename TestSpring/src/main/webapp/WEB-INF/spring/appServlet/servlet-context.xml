@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- 어노테이션(@)을 기능으로 사용하겠다. -->
+	<annotation-driven />
+	
+	<!-- 객체 조회 범위. 어노테이션 조회 기준 -->
+	<context:component-scan base-package="com.spring.test" />
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- resources 경로로 접근하는 경우 resources 파일로 연결하겠다. 이 것 떄문에 Controller 타지 않고 resources는 다이렉트로 폴더로 접근 -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- Controller에서 View 정보가 들어 올 경우 앞과 뒤에 정보를 추가 -->
+	<!-- Resolver : 이벤트 납치범 -->
+	<!-- InternalResourceViewResolver : 뷰 정보 이벤트를 중간 취득하여 경로정보를 추가하고 원래 상태로 이동시킴 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	
+	
+	
+</beans:beans>

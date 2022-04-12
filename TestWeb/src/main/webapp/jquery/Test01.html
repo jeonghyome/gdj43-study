@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#box {
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+	height: 150px;
+	background-color: orange;
+}
+</style>
+<!-- 
+	src : 파일 외부 자바스크립트 취득. 해당 내용으로 entity를 교체 
+-->
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">	
+var colors = ["orange", "blue", "red"];
+var pos = 0;
+
+$(document).ready(function() { // 문서가 준비된 후 실행. 복수 선언 시 순차적 실행
+	console.log($("#txt").val());
+	$("input[type='text']").val("바꾼값");
+	
+	$("#btn1").on("click", function() {
+		console.log($("#box").width());
+		$("#box").width($("#box").width() * 2);
+		$("#box").height($("#box").height() * 2);
+	});
+	// $("#btn1").click(); // 해당 객체 클릭
+	
+	// $("#btn1").off("click"); // off : 이벤트 제거
+	
+	$("#box").on("click", function() {
+		pos++;
+		
+		if(pos == colors.length) {
+			pos = 0;
+		}
+		// $(this) : 이벤트 발생 대상
+		// css(속성) : 해당 속성의 값을 가져온다
+		// css(속성, 값) : 해당 속성에 값을 할당
+		console.log($(this).css("background-color"));
+		$(this).css("background-color", colors[pos]);
+	});
+});
+</script>
+</head>
+<body>
+<input type="text" id="txt" value="처음 테스트" />
+<input type="text" id="txt" value="처음 테스트" />
+<input type="text" id="txt" value="처음 테스트" />
+<input type="text" id="txt" value="처음 테스트" />
+<input type="text" id="txt" value="처음 테스트" />
+<br/>
+<input type="button" value="버튼1" id="btn1" />
+<br/>
+<div id="box"></div>
+</body>
+</html>

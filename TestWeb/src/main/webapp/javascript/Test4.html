@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#box {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	background-color: orange;
+	vertical-align: top;
+}
+#a {
+	color: red;
+	font-weight: bold;
+	display: none;
+}
+#txt:focus {
+	outline: 3px solid rgba(40, 40, 255, 0.4);
+}
+</style>
+<script type="text/javascript">
+var colors = ["orange", "silver", "blue"];
+var pos = 0;
+
+function test(stat) {
+	console.log(stat);
+	var box = document.getElementById("box");
+	
+	switch(stat) {
+	case "click" :
+		pos++;
+		if(pos == colors.length) {
+			pos = 0;
+		}
+		box.style.backgroundColor = colors[pos];
+		break;
+	case "mouseover" :
+		box.style.outline = "3px solid rgba(255, 70, 70, 0.4)";
+		break;
+	case "mouseout" :
+		box.style.outline = "";
+		break;
+	case "dblclick" :
+		box.style.width = box.clientWidth + 50 + "px";
+		box.style.height = box.clientHeight + 50 + "px";
+		break;
+	}
+}
+
+function testFocus() {
+	var txt = document.getElementById("txt");
+	
+	txt.value = "";
+}
+// onchange : focus가 벗어나면서 가지고있던 value가 변경되었을 경우
+function testChange() {
+	var txt = document.getElementById("txt");
+	var a = document.getElementById("a");
+	
+	if(txt.value.length < 4) {
+		a.style.display = "block";
+	} else {
+		a.style.display = "";
+	}
+}
+/* 
+	onkeypress, onkeydown : 키를 누른ㅅㅇ태
+	onkeyup : 키를 떼었을 때(1회성)
+*/
+function testKey(event) {
+	console.log(event);
+	var box = document.getElementById("box");
+	switch(event.key) {
+	case "+" :
+		box.style.width = box.clientWidth + 2 + "px";
+		box.style.height = box.clientHeight + 2 + "px";
+		break;
+	case "-" :
+		if(box.clientWidth - 50 >= 0) {
+			box.style.width = box.clientWidth - 2 + "px";
+			box.style.height = box.clientHeight - 2 + "px";			
+		}
+		break;
+	}
+}
+
+</script>
+</head>
+<body onkeyup="testKey(event);">
+<div id="box" 
+	 onclick="test('click');"
+	 onmouseover="test('mouseover');"
+	 onmouseout="test('mouseout');"
+	 ondblclick="test('dblclick');"></div>
+<br/>
+<input type="text" id="txt" placeholder="아무거나 입력 최소 4자이상" size="30"
+	   onfocus="testFocus();"
+	   onchange="testChange();"/>
+<div id="a">최소 4자 이상이 되어야 함!</div>
+</body>
+</html>

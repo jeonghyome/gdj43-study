@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#ta {
+	resize: none;
+}
+</style>
+<script type="text/javascript">
+
+function test() {
+	var ta = document.getElementById("ta");
+	var val = [];
+	
+	for(var i = 0; i < 6; i++) {
+		 val[i] = Math.floor(Math.random() * 45) + 1;
+		for(var j = 0; j <i; j++){
+			if(val[i] == val[j]) {
+				i--;
+				break;
+			}
+		}
+	}
+	ta.value += val + "\n";
+}
+</script>
+</head>
+<body>
+<input type="button" value="버튼" onclick="test();" />
+<br/>
+<textarea id="ta" rows="5" cols="20"></textarea>
+</body>
+</html>

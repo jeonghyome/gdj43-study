@@ -1,0 +1,681 @@
+<!-- 
+	상품 목록
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오뱅크 ERP : 상품관리</title>
+<link rel="icon" href="../../images/favicon/favi.gif" />
+<link rel="stylesheet" type="text/css" href="../../css/cmn.css" />
+<style type="text/css">
+/* 가로 사이즈 조정용 */
+.cont_wrap {
+	width: 1013px;
+}
+/* 개인 작업 영역 */
+.body {
+	display: block;
+	background-color: white;
+	width: 1013px;
+	height: 100%;
+	margin: auto;
+}
+
+.bodyWrap {
+	display: block;
+	background-color: white;
+	width: 927px;
+	height: 100%;
+	margin: 40px auto;
+}
+
+/* sts */
+.sts {
+	display: inline-block;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.sts_list {
+	display: inline-block;
+	vertical-align: middle;
+	width: 130px;
+	margin: 0 30px;
+	padding: 8px 5px;
+	font-size: 10pt;
+	text-align: center;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+}
+.sts_list:hover {
+   font-weight: bold;
+   cursor: pointer;
+   background-color: #F2B705;
+}
+
+.sts_list:active {
+   width: 130pxpx;
+   margin: 0 30px;
+   padding: 8px 5px;
+   background-color: #F2CB05;
+   cursor: pointer;
+   font-weight: bold;
+}
+.tLine{
+	background-color: #4B94F2;
+	width: 927px;
+	height: 3px;
+	margin: 10px auto;
+}
+/********** srch_table **********/
+.srch_table {
+	border-collapse: collapse;
+	background-color: #f2f2f2;
+	width: 100%;
+	font-size: 10.5pt;
+	text-align: left;
+	margin: 10px 0px;
+}
+
+.srch_table tr {
+	height: 40px;
+}
+
+.srch_table tr:nth-child(6) {
+	height: 41.5px;
+	border-top: 1.5px solid #d7d7d7;
+}
+
+.asc_btn {
+	width: 30px;
+	height: 25px;
+}
+
+.asc_btn:hover {
+	cursor: pointer;
+}
+
+select {
+	height: 23px;
+	width: 150px;
+	font-size: 12px;
+}
+
+.srch_name {
+	margin: 0px 10px 0px 20px;
+	font-weight: bold;
+}
+
+.srch_msg {
+	height: 20px;
+	width: 305px;
+	font-size: 12px;
+}
+/*---------  검색결과 : n건 --------- */
+.SearchResult { /* 영업기회 검색결과 */
+	width: 927px;
+	font-size: 11pt;
+	text-align: left;
+	margin-top: 30px;
+}
+/********** list_table **********/
+.list_table {
+	border-collapse: collapse;
+	background-color: #FFF;
+	width: 100%;
+	font-size: 10.5pt;
+	text-align: left;
+	margin: 10px 0px 40px 0px;
+}
+
+.list_table thead th {
+	height: 25px;
+	font-size: 10pt;
+	font-weight: bold;
+	/* border-top: 2px solid gray; */
+}
+
+.list_table thead tr:nth-child(1) {
+	border-top: 2px solid gray;
+}
+
+.list_table thead tr:nth-child(3) {
+	border-bottom: 1.5px solid gray;
+}
+
+.list_table thead tr {
+	border-bottom: none;
+}
+
+.list_table tbody td {
+	height: 30px;
+	font-size: 11pt;
+}
+
+.list_table tbody tr:nth-child(3) {
+	border-bottom: 1.5px solid #d7d7d7;
+}
+/* 글번호 */
+.list_table thead tr:nth-child(1) th:nth-child(1), .list_table tbody tr:nth-child(1) td:nth-child(1)
+	{
+	text-align: center;
+}
+/* 상품명 */
+.list_table tbody tr:nth-child(2) td:nth-child(2) {
+	font-weight: 700;
+	font-size: 12pt;
+}
+.list_table tbody tr:nth-child(2) td:nth-child(2):hover {
+	color: #4b94f2;
+	cursor: pointer;
+	text-decoration: underline;
+}
+/* 판매 가능 버튼 */
+.sales_psbl_btn {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0px 10px;
+	min-width: 30px;
+	height: 30px;
+	margin-left: 10px;
+	line-height: 30px;
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: center;
+	background-color: #4b94f2;
+	border-radius: 2px;
+	color: #f2f2f2;
+	cursor: pointer;
+}
+
+.sales_psbl_btn:active {
+	background-color: #2e83f2;
+}
+</style>
+</head>
+<body>
+	<div class="top_area">
+		<div class="logo">
+			<div class="logo_erp_text">ERP</div>
+		</div>
+		<div class="menu_depth1_wrap">
+			<!-- _on 달린 것이 활성화 상태 -->
+			<div class="top_menu">
+				<div class="top_menu_text">인사</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">그룹웨어</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">경영관리</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu_on">
+				<div class="top_menu_text">영업</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">고객지원</div>
+				<div class="top_menu_bar"></div>
+			</div>
+			<div class="top_menu">
+				<div class="top_menu_text">경영정보</div>
+				<div class="top_menu_bar"></div>
+			</div>
+		</div>
+	</div>
+<div class="left_area">
+	<div class="emp_info_area">
+		<div class="emp_info">
+			<div class="emp_image_area">
+				<div class="emp_image_wrap">
+					<img alt="사원이미지" src="../../images/cmn/emp_image.png"/>
+				</div>
+			</div>
+			<div class="emp_info_wrap">
+				<div class="emp_name_txt">김정효<div class="emp_opt_btn"></div></div>
+				<div class="emp_dept_txt">영업관리팀 대리</div>
+			</div>
+		</div>
+		<div class="emp_menu_area">
+			<div class="emp_menu">메신저</div>
+			<div class="emp_menu">내정보</div>
+			<div class="emp_menu_last">로그아웃</div>
+		</div>
+	</div>
+	<div class="left_menu_dpeth1_txt">영업</div>
+	<div class="left_menu_wrap">
+		<!-- 2depth 메뉴 -->
+		<!-- 현재 선택중인 메뉴는 on -->
+		<div class="menu_depth2_on">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">상품관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_area">
+				<div class="menu_depth2_text">고객관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+			<div class="menu_depth3_wrap">
+				<!-- 현재 선택중인 메뉴는 on -->
+				<div class="menu_depth3">고객사관리</div>
+				<div class="menu_depth3">고객관리</div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">리드관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">영업관리</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_single_area">
+				<div class="menu_depth2_text">일정</div>
+				<div class="left_menu_bar"></div>
+			</div>
+		</div>
+		<div class="menu_depth2">
+			<div class="menu_depth2_area">
+				<div class="menu_depth2_text">보고서</div>
+				<div class="left_menu_bar"></div>
+			</div>
+			<div class="menu_depth3_wrap">
+				<!-- 현재 선택중인 메뉴는 on -->
+				<div class="menu_depth3">종합차트</div>
+				<div class="menu_depth3">고객</div>
+				<div class="menu_depth3">영업</div>
+				<div class="menu_depth3">실적</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="right_area">
+		<div class="navi_bar">
+			Home
+			<div class="navi_next"></div>
+			영업
+			<div class="navi_next"></div>
+			상품관리
+			<div class="navi_next"></div>
+			상품 목록
+		</div>
+		<!-- 내용영역 -->
+		<div class="cont_wrap">
+			<div class="page_title_bar">
+				<div class="page_title_text">상품 목록</div>
+			</div>
+			<!-- page_title_bar end -->
+			<!-- 해당 내용에 작업을 진행하시오. -->
+			<div class="cont_area">
+				<!-- 여기부터 쓰면 됨 -->
+				<div class="body">
+					<!-- 검색영역 -->
+
+					<div class="bodyWrap">
+						<!-- sts : 상품현황 -->
+						<div class="sts">
+							<div class="sts_list">전체 : 252건</div>
+							<div class="sts_list">판매중 : 235건</div>
+							<div class="sts_list">판매중단 : 15건</div>
+							<div class="sts_list">출시예정 : 2건</div>
+						</div>
+						<div class="tLine"></div>
+						<!-- class="sts" end -->
+
+						<!-- srch_table -->
+						<table class="srch_table">
+
+							<colgroup>
+								<col width="80" />
+								<col width="60" />
+								<col width="40" />
+								<col width="60" />
+								<col width="60" />
+								<col width="90" />
+								<col width="60" />
+								<col width="30" />
+								<col width="10" />
+								<col width="55" />
+							</colgroup>
+							<tbody>
+								<!-- col=10 -->
+								<tr>
+									<td>
+										<span class="srch_name">상품 등급</span>
+									</td>
+									<td colspan="9">
+										<select>
+											<option>선택안함</option>
+											<option>S 등급</option>
+											<option>A 등급</option>
+											<option>B 등급</option>
+											<option>C 등급</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="srch_name">판매 상태</span>
+									</td>
+									<td colspan="9">
+										<label><input type="checkbox" name="sales_sts" value="1" checked="checked" />전체 : 252건</label> 
+										&nbsp;
+										<label><input type="checkbox" name="sales_sts" value="2" />판매중 : 235건</label> 
+										&nbsp;
+										<label><input type="checkbox" name="sales_sts" value="3" />판매중단 : 235건</label> 
+										&nbsp;
+										<label><input type="checkbox" name="sales_sts" value="3" />출시예정 : 2건</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span class="srch_name">기간</span>
+									</td>
+									<td>
+										<select>
+											<option selected="selected">상품등록일</option>
+										</select>
+									</td>
+									<td colspan="8">
+										<input type="button" value="어제" />
+										<input type="button" value="오늘" />
+										<input type="button" value="일주일 전" />
+										<input type="button" value="1개월 전" />
+										<input type="button" value="3개월 전" />
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td colspan="4">
+										<input type="date" />
+										~
+										<input type="date" />
+									</td>
+									<td colspan="4"></td>
+								</tr>
+								<tr>
+									<td>
+										<span class="srch_name">검색어</span>
+									</td>
+									<td>
+										<select>
+											<option>선택안함</option>
+											<option>상품명</option>
+											<option>상품번호</option>
+										</select>
+									</td>
+									
+									<td colspan="4">
+										<input type="text" class="srch_msg" placeholder="검색 조건을 선택한 후 입력해주세요." />
+									</td>
+									<td>
+										<span class="cmn_btn">검색</span>
+									</td>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<td>
+										<span class="srch_name">정렬</span>
+									</td>
+									<td>
+										<select>
+											<option selected="selected">상품등급</option>
+											<option>등록일</option>
+											<option>상품이름</option>
+										</select>
+									</td>
+									<td>
+										<img class="asc_btn cmn_btn" alt="등록버튼" src="../../images/sales/asc.png" />
+									</td>
+									<td colspan="7"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="SearchResult"><h3>상품 (검색결과: 390건)</h3></div>
+						<!-- list_table -->
+						<table class="list_table">
+							<!-- col=4 -->
+							<colgroup>
+								<col width="70">
+								<col width="100">
+								<col width="290">
+								<col width="80">
+							</colgroup>
+							<thead>
+								<tr>
+									<th rowspan="3">글번호</th>
+									<th>상품번호</th>
+									<th>등급</th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>이자율</th>
+									<th>상품명</th>
+									<th>판매상태</th>
+								</tr>
+								<tr>
+									<th>대출 한도 금액</th>
+									<th>계약 기간</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td rowspan="3">010</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">009</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">008</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">007</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">006</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">005</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">004</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">003</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">002</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+							<tbody>
+								<tr>
+									<td rowspan="3">001</td>
+									<td>123456</td>
+									<td>S등급</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5%</td>
+									<td>가나다 대출상품</td>
+									<td><span class="sales_psbl_btn">판매 가능</span></td>
+								</tr>
+								<tr>
+									<td>13,000,000 원</td>
+									<td>2021.12.03 ~ 2023.12.02</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="body_bottom">
+							<div class="board_bottom">
+								<div class="pgn_area">
+									<div class="page_btn page_first">first</div>
+									<div class="page_btn page_prev">prev</div>
+									<div class="page_btn_on">1</div>
+									<div class="page_btn">2</div>
+									<div class="page_btn">3</div>
+									<div class="page_btn">4</div>
+									<div class="page_btn">5</div>
+									<div class="page_btn page_next">next</div>
+									<div class="page_btn page_last">last</div>
+								</div>
+								<div class="cmn_btn">등록</div>
+							</div>
+						</div>
+					</div>
+					<!-- class="bodyWrap" end -->
+				</div>
+				<!-- class="body" end -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

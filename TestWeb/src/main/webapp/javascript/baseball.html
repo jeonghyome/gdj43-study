@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#res {
+	display: inline-block;
+	vertical-align: top;
+	width: 300px;
+	height: 300px;
+	border: 1px solid #444444;
+	overflow-y: auto;
+	font-size: 14pt;
+	resize: none;
+}
+
+#num {
+	height: 30px;
+	width: 238px;
+	vertical-align: middle;
+}
+
+[type="button"] {
+	width: 50px;
+	height: 36px;
+	vertical-align: middle;
+}
+</style>
+<script type="text/javascript">
+var com = "";
+var round = 0;
+set();
+
+function checkG(obj) {
+	var num = document.getElementById("num");
+	
+	obj.disabled = true;
+	
+	num.value += obj.value;
+		
+	if(num.value.length == 3) {
+		round++;
+		
+		var o = 0;
+		var b = 0;
+		var s = 0;
+		
+		for(var i = 0 ; i < num.value.length ; i++) {
+			if(com.indexOf(num.value[i]) == -1) {
+				o++;
+			} else if(com.indexOf(num.value[i]) == i) {
+				s++;
+			} else {
+				b++;
+			}
+		}
+		
+		var t = round + "회 - 입력값 : " + num.value + " [" 
+			  + s + "S " + b + "B " + o + "O" + "]\n";
+		
+		if(s != 3 && round == 9) {
+			var txt = t + "Gameover";
+			document.getElementById("res").value += txt;
+			num.disabled = true;
+			btnDisabled();
+		} else if(s != 3) {
+			document.getElementById("res").value += t;
+			btnUndisabled();
+		} else {
+			var txt = t + "Win";
+			document.getElementById("res").value += txt;
+			num.disabled = true;
+			btnDisabled();
+		}
+		
+		num.value = "";
+	} 
+}
+
+function btnUndisabled() {
+	for(var i = 1 ; i < 10 ; i++) {
+		document.getElementById("btn" + i).disabled = false;
+	}
+}
+
+function btnDisabled() {
+	for(var i = 1 ; i < 10 ; i++) {
+		document.getElementById("btn" + i).disabled = true;
+	}
+}
+
+function set() { // 중복없이 숫자뽑기
+	com = "";
+	
+	for(var i = 0 ; i < 3 ; i++) {
+		var a = Math.floor(Math.random() * 9) + 1;
+		
+		if(com.indexOf(a) == -1) {
+			com += a;
+		} else {
+			i--;
+		}
+	}
+	
+	console.log(com);
+}
+
+function newG() {
+	set();
+	document.getElementById("res").value = "";
+	round = 0;
+	document.getElementById("num").disabled = false;
+	btnUndisabled();
+}
+</script>
+</head>
+<body>
+<h3>숫자야구</h3>
+<input type="text" id="num" maxlength="3"
+	   placeholder="1~9까지 숫자 3개를 입력하시오." readonly="readonly" />
+<input type="button" value="리셋" onclick="newG();" /><br/>
+<input type="button" id="btn1" value="1" onclick="checkG(this);" />
+<input type="button" id="btn2" value="2" onclick="checkG(this);" />
+<input type="button" id="btn3" value="3" onclick="checkG(this);" />
+<input type="button" id="btn4" value="4" onclick="checkG(this);" />
+<input type="button" id="btn5" value="5" onclick="checkG(this);" /><br/>
+<input type="button" id="btn6" value="6" onclick="checkG(this);" />
+<input type="button" id="btn7" value="7" onclick="checkG(this);" />
+<input type="button" id="btn8" value="8" onclick="checkG(this);" />
+<input type="button" id="btn9" value="9" onclick="checkG(this);" />
+<br/>
+<textarea id="res" rows="11" cols="20" readonly="readonly"></textarea>
+</body>
+</html>

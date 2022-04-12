@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.a, .b, .c {
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+	height: 150px;
+	border: 1px solid #000;
+}
+
+.a {
+	display: none; /* 보여지지 않으며, 영역이 존재하지 않는다 */
+}
+
+.b {
+	visibility: hidden; /* 영역은 존재하나 보여지지 않는다 */
+}
+
+.d {
+	display: inline-table;
+	width: 150px;
+	height: 150px;
+	border: 1px solid #000;
+}
+
+.c {
+	line-height: 150px;
+	text-align: center;
+}
+
+.d > div {
+	display: table-cell;
+	height: 150px;
+	text-align: center;
+	vertical-align: middle;
+	background-color: orange;
+}
+
+</style>
+</head>
+<body>
+<div class="a"></div>
+<div class="b"></div>
+<div class="c">가나다</div>
+<div class="d">
+	<div>가나다<br/>라마바</div>
+</div>
+</body>
+</html>
