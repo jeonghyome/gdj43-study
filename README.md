@@ -1,2 +1,2 @@
-# gdj43-study
-구디아카데미(실습파일)
+## 수강 실습 파일 🏫
+Java / HTML / CSS / JavaScript / Spring / Ajax / jQuery / JSP
