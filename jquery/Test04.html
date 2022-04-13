@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#box {
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+	height: 150px;
+	background-color: orange;
+}
+</style>
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#hideBtn").on("click", function() {
+		//$("#box").hide();
+		$("#box").fadeOut("fast", function() {
+			alert("감췃음");
+		});
+	});
+	$("#showBtn").on("click", function() {
+		//$("#box").show();
+		$("#box").fadeIn("slow");
+	});
+	
+	$("#test").on("click", function() {
+		alert("ㅎㅇ");
+	});
+});
+</script>
+</head>
+<body>
+<input type="button" value="Hide" id="hideBtn" />
+<input type="button" value="Show" id="showBtn" />
+<br/>
+<div id="box"></div>가나다
+<img alt="테스트" src="1.jpg" id="test" />
+</body>
+</html>

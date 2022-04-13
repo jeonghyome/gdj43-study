@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보</title>
+<style type="text/css">
+#comImg {
+	height: 200px;
+}
+</style>
+<script type="text/javascript">
+			//0 1 2
+var imgs = ["rock.png", "scissor.png", "paper.png"];
+var now = 0;
+var interval;
+var w = 0;
+var d = 0;
+var l = 0;
+
+function startG() {
+	interval = setInterval(playImg, 50);
+	disabledBtn(0);
+	undisabledBtn(1);
+}
+
+function playImg() {
+	now = Math.floor(Math.random() * 3);
+	
+	document.getElementById("comImg").src = imgs[now];
+}
+
+function selectU(type) {
+	clearInterval(interval);
+	
+	if(type == now) {
+		alert("비겼다.");
+		d++;
+	} else if((type == 0 && now == 1) 
+			|| (type == 1 && now == 2)
+			|| (type == 2 && now == 0)) {
+		alert("이겼다.");
+		w++;
+	} else {
+		alert("졌다.");
+		l++;
+	}
+	
+	document.getElementById("res").innerHTML
+			= w + "승 " + d + "무 " + l + "패";
+	
+	disabledBtn(1);
+	undisabledBtn(0);
+}
+
+/**
+ * type : 0 - 시작버튼, 1 - 선택버튼
+ */
+function disabledBtn(type) {
+	if(type == 0) {
+		document.getElementById("startBtn").disabled = true;
+	} else {
+		for(var i = 0 ; i < imgs.length ; i++) {
+			document.getElementById("btn" + i).disabled = true;
+		}
+	}
+}
+
+function undisabledBtn(type) {
+	if(type == 0) {
+		document.getElementById("startBtn").disabled = false;
+	} else {
+		for(var i = 0 ; i < imgs.length ; i++) {
+			document.getElementById("btn" + i).disabled = false;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<div id="res">0승 0무 0패</div>
+<img alt="컴퓨터" src="rock.png" id="comImg" />
+<br/>
+<input type="button" value="시작" id="startBtn" onclick="startG();" />
+<br/>
+<br/>
+<input type="button" value="바위" id="btn0" 
+	   onclick="selectU(0);" disabled="disabled" />
+<input type="button" value="가위" id="btn1" 
+	   onclick="selectU(1);" disabled="disabled" />
+<input type="button" value="보" id="btn2" 
+	   onclick="selectU(2);" disabled="disabled" />
+</body>
+</html>

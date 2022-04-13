@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var arr = [5, 7, 3];
+console.log(arr.length); // 배열 크기
+
+// 오름차순 구현
+var temp = 0;
+
+if (arr[0] > arr[1]) {
+	temp = arr[0];
+	arr[0] = arr[1];
+	arr[1] = temp;
+} 
+if (arr[1] > arr[2]) {
+	temp = arr[1];
+	arr[1] = arr[2];
+	arr[2] = temp;
+} 
+if (arr[1] > arr[2]) {
+	temp = arr[1];
+	arr[1] = arr[2];
+	arr[2] = temp;
+}
+
+for(var i = 0; i < arr.length - 1; i++) {
+	for(var j = i + 1; j < arr.length; j++) {
+		if (arr[i] > arr[j]) {
+			temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		} 
+	}
+}
+console.log(arr); // [3, 5, 7]
+</script>
+</head>
+<body>
+
+</body>
+</html>

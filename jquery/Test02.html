@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div > input {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+}
+#sign, #wrap {
+	display: inline-block;
+	vertical-align: top;
+}
+#equal {
+	width: 66px;
+	height: 30px;
+}
+</style>
+<script type="text/javascript" src="./jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+var val = "";
+var cal = "";
+var cal_temp = "";
+var check = false;
+
+$(document).ready(function() {
+	// 주체 : #wrap
+	// 대상 : #wrap안에 존재하는 input[type='button']
+	$("#wrap").on("click", "input[type='button']", function() {
+		if($("#txt").val() == "0") {
+			$("#txt").val($(this).val());
+		} else {
+			$("#txt").val($("#txt").val() + $(this).val());
+		}
+		
+		val = $("#txt").val();
+	}); // #wrap click input[type='button'] end
+
+	$("#sign").on("click", "input[type='button']", function() {
+		if(cal == "") {
+			$("#result").val($("#txt").val());
+		} else {
+			if(cal == "+") {
+				$("#result").val($("#result").val() * 1 + $("#txt").val() * 1);
+			} else if(cal == "-") {
+				$("#result").val($("#result").val() * 1 - $("#txt").val() * 1);
+			} else if(cal == "*") {
+				$("#result").val($("#result").val() * 1 * $("#txt").val() * 1);
+			} else if(cal == "/") {
+				$("#result").val($("#result").val() * 1 / $("#txt").val() * 1);
+			}
+		}
+		cal = $(this).val();
+		$("#txt").val("0");
+
+	}); // #sign click end
+	
+	$("#equal").on("click", function() {
+		if(cal == "") {
+			$("#result").val($("#txt").val());
+		} else {
+			if(cal == "+") {
+				$("#result").val($("#result").val() * 1 + val * 1);
+			} else if(cal == "-") {
+				$("#result").val($("#result").val() * 1 - val * 1);
+			} else if(cal == "*") {
+				$("#result").val($("#result").val() * 1 * val * 1);
+			} else if(cal == "/") {
+				$("#result").val($("#result").val() * 1 / val * 1);
+			}
+		}
+		$("#txt").val("0");
+	}); // #equal click end
+	
+	$("#reset").on("click", function() {
+		$("#txt").val("0");
+		$("#result").val("0");
+		val == "";
+		cal == "";
+	}); // #reset click end
+	
+}); // document ready end
+</script>
+</head>
+<body>
+<input type="text" id="result" value="0" />
+<br/>
+<input type="text" id="txt" value="0" />
+<br/>
+<div id="wrap">
+	<input type="button" value="7" />
+	<input type="button" value="8" />
+	<input type="button" value="9" />
+	<br/>
+	<input type="button" value="4" />
+	<input type="button" value="5" />
+	<input type="button" value="6" />
+	<br/>
+	<input type="button" value="1" />
+	<input type="button" value="2" />
+	<input type="button" value="3" />
+	<br/>
+	<input type="button" value="0" />
+</div>
+<div id="sign">
+	<input type="button" value="+" />
+	<br/>
+	<input type="button" value="-" />
+	<br/>
+	<input type="button" value="*" />
+	<br/>
+	<input type="button" value="/" />
+</div>
+<div>
+	<input type="button" id="reset" value="C" />
+	<input type="button" id="equal" value="=" />
+</div>
+</body>
+</html>

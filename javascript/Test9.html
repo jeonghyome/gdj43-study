@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var a = {
+		// key : value로 구성, 구분은 ,로 구분
+		no : 1,
+		name : "홍길동"
+}
+console.log(a.no + "\t" + a.name);
+a.name = "김철수";
+console.log(a.no + "\t" + a.name);
+console.log(a.age);
+console.log(typeof a.age == "undefined"); // typeof 자료형 체크
+console.log(typeof a.age); // typeof 자료형 체크
+a.age = 30;
+console.log(a.age);
+console.log(a);
+console.log(a["name"]);
+
+function go() {
+	// location.href : 지정된 경로로 이동
+	location.href = "https://www.google.com";
+}
+
+function r() {
+	// location.reload() : 페이지 새로고침
+	location.reload();
+}
+
+// window.onload : 브라우저에 해당 내용(HTML)을 다 읽었을 때
+// 주의사항 : onload가 여러개 존재 할 경우 마지막 것만 적용
+window.onload = function() {
+	document.getElementById("txt").value = "초기값 셋팅";
+}
+
+var test = function(msg) {
+	alert("Hi!" + this.name + msg);
+	// call 사용 시 this는 call에서 불러온 객체를 의미
+}
+// call()
+// call(객체, 값들...) : 활용 객체를 지정하고 값들을 인자에 순차적으로 넣는다.
+test.call(a, "~~~"); // 변수에 담겨있는 함수를 실행
+</script>
+</head>
+<body>
+<input type="text" id="txt" />
+<input type="button" value="Go!" onclick="go();" />
+<input type="button" value="R!" onclick="r();" />
+</body>
+</html>

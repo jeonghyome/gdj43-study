@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#rpsimg {
+	width: 300px;
+}
+#txt {
+	border: none;
+	outline: none;
+	font-size: 30px;
+	font-weight: bold;
+}
+</style>
+<script type="text/javascript">
+var interval = null;
+var imgs = ["scissor.png","rock.png","paper.png"];
+var pos = 0;
+var w = 0;
+var t = 0;
+var l = 0;
+var flag = true;
+
+function st(obj) {	
+	var txt = document.getElementById("txt");
+	var rpsimg = document.getElementById("rpsimg");
+	var star = document.getElementById("start");
+	
+	switch(obj) {
+	case "start" :
+		interval = setInterval(start, 100);
+		flag = false;
+		star.disabled = true;
+		break;
+	case "0" :
+		clearInterval(interval);
+		interval = null;
+		if(!flag) {
+			if(obj == pos) {
+				t++;
+				alert("비겼다");
+			} else if(pos == 1) {
+				l++;
+				alert("졌다");
+			} else {
+				w++;
+				alert("이겼다");
+			}	
+			flag = true;
+			star.disabled = false;
+		} else {
+			alert("시작을 눌러주세요.");
+		}
+		break;
+	case "1" :
+		clearInterval(interval);
+		interval = null;
+		if(!flag) {
+			if(obj == pos) {
+				t++;
+				alert("비겼다");
+			} else if(pos == 0) {
+				w++;
+				alert("이겼다");
+			} else {
+				l++;
+				alert("졌다");
+			}
+			flag = true;
+			star.disabled = false;
+		} else {
+			alert("시작을 눌러주세요.");
+		}
+		break;
+	case "2" :
+		clearInterval(interval);
+		interval = null;
+		if(!flag) {
+			if(obj == pos) {
+				t++;
+				alert("비겼다");
+			} else if(pos == 1) {
+				w++;
+				alert("이겼다");
+			} else {
+				l++;
+				alert("졌다");
+			}
+			flag = true;
+			star.disabled = false;
+		} else {
+			alert("시작을 눌러주세요.");
+		}
+		break;
+	case "reset" :
+		clearInterval(interval);
+		interval = null;
+		pos = 0;
+		w = 0;
+		t = 0;
+		l = 0;
+		document.getElementById("rpsimg").src ="scissor.png";
+		star.disabled = false;
+		flag = true;
+		break;
+	}
+	txt.value = w + "승\t" + t  + "무\t" + l + "패";
+}
+
+function start() {
+	pos++;
+	
+	if(pos == imgs.length) {
+		pos = 0;
+	}	
+	document.getElementById("rpsimg").src = imgs[pos];
+}
+
+window.onload = function() {
+	document.getElementById("txt").value = "0승\t0무\t0패";
+}
+</script>
+</head>
+<body>
+<div>
+	<input type="text" id="txt" />
+</div>
+<div>
+	<img alt="가위바위보" src="scissor.png" id="rpsimg">
+</div>
+<div>
+<input type="button" value="시작" id="start" onclick="st('start');" />
+<input type="button" value="리셋" id="reset" onclick="st('reset');" />
+<br/>
+<br/>
+<input type="button" value="가위" id="scissor" onclick="st('0');" />
+<input type="button" value="바위" id="rock" onclick="st('1');" />
+<input type="button" value="보" id="paprer" onclick="st('2');" />
+</div>
+</body>
+</html>

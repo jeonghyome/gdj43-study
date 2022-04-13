@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	font-size: 0;
+}
+.box_out {
+	display: table-cell;
+    vertical-align: middle;
+	width: 140px;
+	height:180px;
+	background-color: #8D6E63;
+	border-radius: 10px;
+}
+.box {
+	width: 128px;
+	height: 161px;
+	margin: 0 auto;
+}
+.number {
+ 	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #EEEEEE;
+	margin: 1px;
+	border: 0;
+}
+.sign2 {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #E0E0E0;
+	margin: 1px;
+	border: 0;
+}
+.number:hover, .sign:hover {
+ 	background-color: #CFD8DC;
+}
+#result {
+	width: 122px;
+	height: 100%;
+	outline: 0;
+	border:0;
+	background-color: #CDD8DC;
+	border-bottom: 1px solid #EEEEEE;
+	margin-top: 1px;
+	margin-left: 1px;
+}
+#inNum {
+	width: 122px;
+	height: 100%;
+	outline: 0;
+	border: none;
+	background-color: #CDD8DC;
+	margin-left: 1px;
+}
+</style>
+<script type="text/javascript">
+var val_temp = "";  // 값 임시보관
+var cal_temp = ""; // 부호값 임시보관
+var inNum_temp = ""; // 부호값 임시보관
+var val = "";
+var cal = "";
+var flag = false; // 새로입력한 값이 있는지
+var equal = false; // =계산중인지
+
+function test(obj) {
+	var inNum = document.getElementById("inNum"); // 입력값
+	var val_temp_val = document.getElementById("val_temp_val");
+	
+	if (inNum.value === "0") {
+		inNum.value = obj.value;
+	} else {
+		inNum.value += obj.value;
+	}
+	val_temp_val.value = inNum.value;
+	flag = false; // 새로입력한 값있는지
+}
+
+function sign(val) {
+	var inNum = document.getElementById("inNum");
+	var result = document.getElementById("result");
+	var sign_val = document.getElementById("sign_val");
+	
+
+	if(sign_val.value == "") {
+		result.value = inNum.value;
+	} else {
+		if(sign_val.value === "+") {
+			result.value = result.value * 1 + inNum.value * 1;
+		} else if (sign_val.value == "-") {
+			result.value = result.value * 1 - inNum.value * 1;
+		} else if (sign_val.value == "*") {
+			result.value = result.value * 1 * inNum.value * 1;
+		} else if (sign_val.value == "/") {
+			result.value = result.value * 1 / inNum.value * 1;
+		}
+		val_temp = inNum.value;
+		cal_temp = sign_val.value;
+		flag = true;
+	}
+	sign_val.value = val.value;
+	inNum.value = "0";
+}
+
+
+function resultCal() {
+	var sign_val = document.getElementById("sign_val");
+	var result = document.getElementById("result");
+	var inNum = document.getElementById("inNum");
+	var val_temp_val = document.getElementById("val_temp_val");
+	var val = "";
+	var cal = "";
+	
+	
+	if(flag == false && equal == true) { // 계산후 숫자를 새로 입력했을때
+		val = inNum.value;
+		cal = sign_val.value;
+		flag = true;
+	} else if(equal == true) {
+		val = val_temp_val.value;
+		cal = cal_temp;
+	} else {
+		val = inNum.value;
+		cal = sign_val.value;
+		flag = true;
+	}
+	
+	if(cal == "") { // 부호를 한번도 안눌렀을 때
+		result.value = val; // 결과값에 입력값 넣는다
+	} else { // val과 cal을 이용하여 연산
+		if(cal == "+") {
+			result.value 
+					= result.value * 1 + val * 1;
+		} else if(cal == "-") {
+			result.value 
+					= result.value * 1 - val * 1;
+		} else if(cal == "*") {
+			result.value 
+					= result.value * 1 * val * 1;
+		} else if(cal == "/") {
+			result.value 
+					= result.value * 1 / val * 1;
+		}
+	}
+	inNum.value = 0;
+	equal = true;
+}
+
+function reset() {
+	document.getElementById("inNum").value = "0";
+	document.getElementById("result").value = "0";
+	document.getElementById("sign_val").value = "";	
+	flag = false;
+	equal = false;
+}
+
+</script>
+</head>
+<body>
+<input type="hidden" id="sign_val" /> <!-- 부호값 -->
+<input type="hidden" id="val_temp_val" /> <!-- 부호값 -->
+<div class="box_out">	
+	<div class="box">
+		<div>
+			<div><input type="text" id="result" value="0" /></div> <!-- 결과값 -->
+			<div><input type="text" id="inNum" value="0"/></div> <!-- 입력값 -->
+		</div>
+		<div>
+			<input type="button" class="number" value="7" onclick="test(this);" />
+			<input type="button" class="number" value="8" onclick="test(this);" />
+			<input type="button" class="number" value="9" onclick="test(this);" />
+			<input type="button" class="sign2" value="+" onclick="sign(this);" />
+		</div>
+		<div>
+			<input type="button" class="number" value="4" onclick="test(this);" />
+			<input type="button" class="number" value="5" onclick="test(this);" />
+			<input type="button" class="number" value="6" onclick="test(this);" />
+			<input type="button" class="sign2" value="-" onclick="sign(this);" />
+		</div>
+		<div>
+			<input type="button" class="number" value="1" onclick="test(this);" />
+			<input type="button" class="number" value="2" onclick="test(this);" />
+			<input type="button" class="number" value="3" onclick="test(this);" />
+			<input type="button" class="sign2" value="*" onclick="sign(this);" />
+		</div>
+		<div>
+			<input type="button" class="number" value="0" onclick="test(this);" />
+			<input type="button" class="sign2" value="=" onclick="resultCal();" />
+			<input type="button" class="sign2" value="C" onclick="reset();" />
+			<input type="button" class="sign2" value="/" onclick="sign(this);" />
+		</div>
+	</div>
+</div>
+</body>
+</html>
